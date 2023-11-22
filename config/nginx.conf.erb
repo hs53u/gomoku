@@ -1,7 +1,7 @@
 server {
     listen <%= ENV["PORT"] %>;
     server_name _;
-    root /src; # Adjust the path based on where your static files are located
+    root /app/src;
 
     index index.html;
 

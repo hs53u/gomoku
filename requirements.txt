@@ -4,7 +4,7 @@ bcrypt==3.2.2
 Beaker==1.10.0
 beautifulsoup4==4.12.0
 blivet==3.7.1
-blivet-gui==2.4.1
+
 Brlapi==0.8.4
 cached-property==1.5.2
 certifi==2022.9.24

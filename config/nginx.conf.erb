@@ -1,0 +1,11 @@
+server {
+    listen <%= ENV["PORT"] %>;
+    server_name _;
+    root /src; # Adjust the path based on where your static files are located
+
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}

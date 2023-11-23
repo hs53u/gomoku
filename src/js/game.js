@@ -1,5 +1,7 @@
 const board = document.getElementById('game-board');
 
+
+
 // Initialize the board
 function initBoard() {
     for (let i = 0; i < 15; i++) {

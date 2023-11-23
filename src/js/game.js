@@ -1,8 +1,6 @@
 const board = document.getElementById('game-board');
+const gameState = Array(15).fill(null).map(() => Array(15).fill(null));
 
-
-
-// Initialize the board
 function initBoard() {
     for (let i = 0; i < 15; i++) {
         for (let j = 0; j < 15; j++) {
@@ -20,10 +18,22 @@ function makeMove(row, col) {
     const cell = document.querySelector(`[data-row="${row}"][data-col="${col}"]`);
     if (!cell.classList.contains('player-mark') && !cell.classList.contains('opponent-mark')) {
         cell.classList.add('player-mark');
-        // If you have an AI opponent, you might want to add its move here as well
-        // Or handle it through an AJAX request to a backend
+        gameState[row][col] = 'player'; // Update the game state
+        saveGameState();
     }
 }
 
+function saveGameState() {
+    fetch('/api/games', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ gameState })
+    })
+    .then(response => response.json())
+    .then(data => console.log('Game state saved:', data))
+    .catch(error => console.error('Error saving game state:', error));
+}
 
 initBoard();
